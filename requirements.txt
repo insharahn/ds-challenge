@@ -1,0 +1,4 @@
+requests
+python-dotenv
+pandas
+## py -m pip install -r requirements.txt
