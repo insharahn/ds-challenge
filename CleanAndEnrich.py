@@ -1,8 +1,9 @@
 import pandas as pd
 import numpy as np
+from geopy.geocoders import Nominatim
 
-inputFile = "data/zillow_walkscore_census.csv"
-outputFile = "data/zillow_walkscore_census_clean.csv"
+inputFile = "data/zillow_walkscore_census_clean.csv"
+outputFile = "data/clean_data.csv"
 
 #load dataset
 df = pd.read_csv(inputFile)
@@ -33,6 +34,25 @@ df["state"] = df["state"].str.upper().str.strip()
 # --- MISSING DATA ---
 df = df.dropna(subset=["price", "zip_code"]) #drop rows with no price or zip code
 
+
+# --- GEOCODING FIX FOR MISSING/LAT/LONG ---
+geolocator = Nominatim(user_agent="kwk_app")
+
+def geocode_address(row):
+    if pd.isna(row["latitude"]) or str(row.get("walkscore_error")) == "invalid_coords":
+        address = f"{row['address']}, {row['city']}, {row['state']} {row['zip_code']}"
+        try:
+            location = geolocator.geocode(address, timeout=10)
+            if location:
+                return pd.Series([location.latitude, location.longitude])
+        except:
+            return pd.Series([None, None])
+    return pd.Series([row["latitude"], row["longitude"]])
+
+df[["latitude", "longitude"]] = df.apply(geocode_address, axis=1)
+df = df.dropna(subset=["latitude", "longitude"]) #drop rows where geocoding failed (still lat/long missi ng)
+
+
 # --- GET RID OF OUTLIERS ---
 df = df[(df["price"] > 100) & (df["price"] < 5_000_000)]
 df = df[(df["square_feet"].isna()) | ((df["square_feet"] > 100) & (df["square_feet"] < 20_000))]
@@ -45,7 +65,7 @@ competition = df.groupby("zip_code").size().reset_index(name="competition_densit
 df = df.merge(competition, on="zip_code", how="left")
 
 # --- FEATURE ENGINEERING ---
-#populagtion density proxy = population / competition_density (demand pressure).
+#populagtion density proxy = population / competition_density (demand pressure)
 df["population_density_proxy"] = df["population"] / df["competition_density"]
 
 #diversity index = sum of squared population shares (from race columns).
@@ -64,8 +84,14 @@ df["diversity_index"] = df.apply(calculateDiversity, axis=1)
 #affordability index = median_income / price
 df["affordability_index"] = df["median_income"] / df["price"]
 
+# --- DERIVED FEATURES ---
+df["price_per_sqft"] = df["price"] / df["square_feet"]
+df["affordability_ratio"] = (df["price"] * 12) / df["median_income"]  # annual rent vs income
+df["rent_premium"] = df["price"] - df["price"].median()  # relative to median rent
+
 #save clean dataset
 df.to_csv(outputFile, index=False)
 
 print("Preview:")
 print(df.head())
+
