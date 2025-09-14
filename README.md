@@ -7,6 +7,39 @@ The repo includes:
 - Cleaner: Processes raw data into a structured format and enriches with extra features.
 - Visualization Maker: Jupyter notebook I used to make heatmaps, bubble charts, scatter plots, and trend lines showing affordability dynamics.
 
+## Data Dictionary
+| Column Name                    | Description                                                            | Data Type    |
+| ------------------------------ | ---------------------------------------------------------------------- | ------------ |
+| **address**                    | Full street address of the property                                    | String       |
+| **city**                       | City where the property is located                                     | String       |
+| **state**                      | State abbreviation (US postal code format)                             | String       |
+| **zip\_code**                  | 5-digit ZIP Code                                                       | String/Int   |
+| **price**                      | Monthly rent price (USD)                                               | Float        |
+| **bedrooms**                   | Number of bedrooms                                                     | Float        |
+| **bathrooms**                  | Number of bathrooms                                                    | Float        |
+| **square\_feet**               | Living space area (sq. ft.)                                            | Float        |
+| **listing\_date**              | Listing date (YYYY-MM-DD)                                              | Date         |
+| **latitude**                   | Latitude coordinate of property                                        | Float        |
+| **longitude**                  | Longitude coordinate of property                                       | Float        |
+| **url**                        | Zillow property listing URL                                            | String (URL) |
+| **walkscore**                  | Walkability score (0–100; higher = more walkable)                      | Float        |
+| **transit\_score**             | Public transit accessibility score (0–100)                             | Float        |
+| **bike\_score**                | Bike-friendliness score (0–100)                                        | Float        |
+| **walkscore\_error**           | Missing/error flag for Walk Score (null if no issue)                   | String/Null  |
+| **median\_income**             | Median household income in the property’s census area (USD)            | Float        |
+| **population**                 | Total population of the census area                                    | Float        |
+| **white\_pop**                 | White population count                                                 | Float        |
+| **black\_pop**                 | Black/African-American population count                                | Float        |
+| **asian\_pop**                 | Asian population count                                                 | Float        |
+| **hispanic\_pop**              | Hispanic/Latino population count                                       | Float        |
+| **competition\_density**       | Market competition proxy (integer category; higher = more competition) | Int          |
+| **population\_density\_proxy** | Approximate population density (population ÷ area estimate)            | Float        |
+| **diversity\_index**           | Measure of demographic diversity (0–1, higher = more diverse)          | Float        |
+| **affordability\_index**       | Affordability score (lower = more affordable relative to income)       | Float        |
+| **price\_per\_sqft**           | Rent price divided by square footage (USD/sq. ft.)                     | Float        |
+| **affordability\_ratio**       | Rent-to-income ratio (rent ÷ income, unitless)                         | Float        |
+| **rent\_premium**              | Premium/discount vs. expected rent (USD, can be negative)              | Float        |
+
 ## Key Insights
 
 - Walkability premiums are strongest in Chicago and New York.
