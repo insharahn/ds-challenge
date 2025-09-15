@@ -1,11 +1,13 @@
 # Affordability in Motion
 
-This project explores housing affordability across Chicago, Los Angeles, and New York, focusing on how walkability, income, transit, and competition density interact to shape urban housing outcomes.
+This project explores housing affordability across Chicago, Los Angeles, and New York, focusing on how walkability, income, transit, and competition density interact to shape urban housing outcomes. Check out my slide deck <a href="https://www.canva.com/design/DAGy4F6iRGc/OMoIUpeAomMOFMsWi06Hbw/edit?utm_content=DAGy4F6iRGc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">here!</a>
 
 The repo includes:
 - Scrapers: Collect housing, demographic, and amenity data from public sources.
 - Cleaner: Processes raw data into a structured format and enriches with extra features.
 - Visualization Maker: Jupyter notebook I used to make heatmaps, bubble charts, scatter plots, and trend lines showing affordability dynamics.
+- The visualizations and final dataset I had
+- My slide deck
 
 ## Data Dictionary
 | Column Name                    | Description                                                            | Data Type    |
