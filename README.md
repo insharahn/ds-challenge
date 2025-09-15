@@ -52,8 +52,8 @@ The repo includes:
 
 ### How AI Helped
 AI tools supported:
-- Correlation analysis: testing predictors (walkability, income, density) against affordability.
-- Narrative framing: turning data-heavy outputs into memorable insights for presentation.
+- Correlation analysis: testing predictors (walkability, income, density) against affordability. It also helped prioritize the most important features & provided summaries of the data.
+- Narrative framing: turning data-heavy outputs into memorable insights for presentation i.e. helping my analyze my data from different perspectives.
 
 ## API Sources
 1. <a href="https://rapidapi.com/s.mahmoud97/api/zillow56/playground/apiendpoint_519bc7c2-98fa-43d7-86c9-f209a2edf6f5"/>Zillow (Unofficial)</a>
