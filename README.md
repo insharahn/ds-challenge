@@ -2,12 +2,16 @@
 
 This project explores housing affordability across Chicago, Los Angeles, and New York, focusing on how walkability, income, transit, and competition density interact to shape urban housing outcomes. Check out my slide deck <a href="https://www.canva.com/design/DAGy4F6iRGc/OMoIUpeAomMOFMsWi06Hbw/edit?utm_content=DAGy4F6iRGc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">here!</a>
 
+This was for the Kode with Klossy x Infosys Foundation USA Applied Data Science Fundamentals Challenge, which I ended up winning for "Recognition for Data Integration."
+
 The repo includes:
-- Scrapers: Collect housing, demographic, and amenity data from public sources.
-- Cleaner: Processes raw data into a structured format and enriches with extra features.
-- Visualization Maker: Jupyter notebook I used to make heatmaps, bubble charts, scatter plots, and trend lines showing affordability dynamics.
-- The visualizations and final dataset I had
-- My slide deck
+- data: The cleaned version of my dataset.
+- src: 
+1. Scrapers to scrape data, collect housing, demographic, and amenity data from public sources.
+2. Cleaner that processes raw data into a structured format and enriches with extra features.
+3. The Jupyter notebook I used to make heatmaps, bubble charts, scatter plots, and trend lines showing affordability dynamics.
+- visualizations: A couple of the visualizations I made to include in my final presentation.
+- slides: My slide deck that I presented.
 
 ## Data Dictionary
 | Column Name                    | Description                                                            | Data Type    |
